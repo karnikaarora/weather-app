@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo2</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- for icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- EmailJS removed - using FormSubmit instead (no CDN needed) -->
+
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+</head>
+
+
+
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About This App
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Usage Guide</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input id="cityInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <button id="searchBtn" class="btn btn-outline-success" type="button">Search</button>
+          <button id="voiceBtn" class="btn btn-outline-primary ms-2" type="button">🎤</button>
+        </form>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- container of main  -->
+  <div class="container">
+    <main>
+      <h1 class="text-center my-4 fw-bold" id="locationHeading">Weather for Delhi</h1>
+
+      <!-- Sunrise & Sunset Top Right -->
+      <div class="d-flex justify-content-end align-items-center mb-3">
+        <div class="text-end sunrise-sunset-top">
+          <div>🌅 Sunrise: <strong><span id="sunrisevalue">--</span></strong> (<span id="sunriseCountdown">--</span>)
+          </div>
+          <div>🌇 Sunset: <strong><span id="sunsetvalue">--</span></strong> (<span id="sunsetCountdown">--</span>)</div>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div
+              class="card-header py-3 text-bg-primary border-primary d-flex justify-content-between align-items-center">
+              <h4 class="my-0 fw-normal">Temperature Info</h4>
+
+              <!-- Unit Toggle Box -->
+              <div class="btn-group btn-group-sm" role="group">
+                <button id="tempToggle" class="btn btn-light">°C</button>
+                <!-- <button id="speedToggle" class="btn btn-light">m/s</button> -->
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                <span class="tempval">--</span><span class="tempUnit">°C</span>
+              </h1>
+
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Temperature is <strong>
+                    <span class="tempval">--</span><span class="tempUnit">°C</span>
+                  </strong>
+                </li>
+
+                <li>Min Temperature is <strong>
+                    <span id="mintempval">--</span><span class="tempUnit">°C</span>
+                  </strong>
+                </li>
+
+                <li>Max Temperature is <strong>
+                    <span id="maxtempval">--</span><span class="tempUnit">°C</span>
+                  </strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">Humidity Info</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                <span class="humidityvalue">--</span>
+                <small class="text-body-secondary fw-light">%</small>
+              </h1>
+
+              <!-- <h1 class="card-title pricing-card-title">%<small class="text-body-secondary fw-light"></small></h1> -->
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Wind Degree is <strong><span id="winddegreevalue">--</span>°</strong></li>
+                <li>Feels Like <strong><span id="feelslikevalue">--</span>°C</strong></li>
+                <li>Humidity is <strong><span class="humidityvalue">--</span>%</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div
+              class="card-header py-3 text-bg-primary border-primary d-flex justify-content-between align-items-center">
+              <h4 class="my-0 fw-normal">Wind Info</h4>
+
+              <!-- Unit Toggle Box -->
+              <div class="btn-group btn-group-sm" role="group">
+                <!-- <button id="tempToggle" class="btn btn-light active">°C</button> -->
+                <button id="speedToggle" class="btn btn-light">m/s</button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                <span class="windspeedvalue">--</span>
+                <small class="text-body-secondary fw-light">
+                  <span class="windUnit">m/s</span>
+                </small>
+              </h1>
+
+              <!-- <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1> -->
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Wind Speed is
+                  <strong>
+                    <span class="windspeedvalue">--</span>
+                    <span class="windUnit">m/s</span>
+                  </strong>
+                </li>
+                <li>Sunrise: <strong><span id="sunrisevalue">--</span></strong>
+                  (<span id="sunriseCountdown">--</span>)</li>
+                <li>Sunset: <strong><span id="sunsetvalue">--</span></strong>
+                  (<span id="sunsetCountdown">--</span>)</li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <h2 class="map-title">📍 Location on Map</h2>
+      <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+
+      <h2 class="text-center my-4 fw-bold">
+        Weather Of Other Common Places
+      </h2>
+
+
+      <!-- styling -->
+      <style>
+        /* Table spacing and alignment */
+        table th,
+        table td {
+          padding: 12px 15px;
+          /* vertical 12px, horizontal 15px */
+          text-align: center;
+        }
+
+        table th.text-start,
+        table td.text-start {
+          text-align: left;
+          /* first column left-aligned */
+        }
+
+        table thead th {
+          background-color: #f8f9fa;
+        }
+      </style>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cloud_pct</th>
+              <th>Feels_like</th>
+              <th>GroundLevel</th>
+              <th>Humidity</th>
+              <th>Pressure</th>
+              <th>SeaLevel</th>
+              <th>Temp</th>
+              <th>Max_temp</th>
+              <th>Min_temp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="text-start">Seattle</th>
+              <td class="cloud_pct">--</td>
+              <td class="feels_like">--</td>
+              <td class="grnd_level">--</td>
+              <td class="humidity">--</td>
+              <td class="pressure">--</td>
+              <td class="sea_level">--</td>
+              <td class="temp">--</td>
+              <td class="max_temp">--</td>
+              <td class="min_temp">--</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">California</th>
+              <td class="cloud_pct">--</td>
+              <td class="feels_like">--</td>
+              <td class="grnd_level">--</td>
+              <td class="humidity">--</td>
+              <td class="pressure">--</td>
+              <td class="sea_level">--</td>
+              <td class="temp">--</td>
+              <td class="max_temp">--</td>
+              <td class="min_temp">--</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Paris</th>
+              <td class="cloud_pct">--</td>
+              <td class="feels_like">--</td>
+              <td class="grnd_level">--</td>
+              <td class="humidity">--</td>
+              <td class="pressure">--</td>
+              <td class="sea_level">--</td>
+              <td class="temp">--</td>
+              <td class="max_temp">--</td>
+              <td class="min_temp">--</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">New York</th>
+              <td class="cloud_pct">--</td>
+              <td class="feels_like">--</td>
+              <td class="grnd_level">--</td>
+              <td class="humidity">--</td>
+              <td class="pressure">--</td>
+              <td class="sea_level">--</td>
+              <td class="temp">--</td>
+              <td class="max_temp">--</td>
+              <td class="min_temp">--</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Japan</th>
+              <td class="cloud_pct">--</td>
+              <td class="feels_like">--</td>
+              <td class="grnd_level">--</td>
+              <td class="humidity">--</td>
+              <td class="pressure">--</td>
+              <td class="sea_level">--</td>
+              <td class="temp">--</td>
+              <td class="max_temp">--</td>
+              <td class="min_temp">--</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Maldives</th>
+              <td class="cloud_pct">--</td>
+              <td class="feels_like">--</td>
+              <td class="grnd_level">--</td>
+              <td class="humidity">--</td>
+              <td class="pressure">--</td>
+              <td class="sea_level">--</td>
+              <td class="temp">--</td>
+              <td class="max_temp">--</td>
+              <td class="min_temp">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+
+
+  </div>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
+  <!-- <script src="script.js"></script>    -->
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="script.js?v=2"></script>
+
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="bg-dark text-white mt-5 pt-4 pb-4">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Contact Form -->
+        <div class="col-md-6 mb-3 mb-md-0">
+          <h5>Contact Us</h5>
+          <p>Send us a message:</p>
+          <form id="contactForm" action="https://formsubmit.co/karnikaarora04@gmail.com" method="POST">
+            <div class="mb-2">
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="mb-2">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="mb-2">
+              <textarea class="form-control" name="message" rows="2" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Send</button>
+          </form>
+          <small id="formFeedback" class="form-text text-white mt-1"></small>
+        </div>
+
+        <!-- Social Links -->
+        <div class="col-md-6 text-md-end">
+          <h5>Follow Us</h5>
+          <a href="https://www.linkedin.com/in/karnika-arora-932426205/" target="_blank" class="text-white fs-4 me-3">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://github.com/karnikaarora" target="_blank" class="text-white fs-4">
+            <i class="bi bi-github"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <hr class="bg-light mt-4">
+      <p class="text-center mb-0">&copy; 2025 YourAppName. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
+
+<style>
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  }
+</style>

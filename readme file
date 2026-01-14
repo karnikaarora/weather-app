@@ -1,0 +1,91 @@
+# 🌦️ Weather Web App
+
+A responsive weather web application built using **HTML, Bootstrap, and JavaScript** that displays real-time weather information for different cities.
+
+---
+
+## 🚀 Project Overview
+
+This project was built as a hands-on learning exercise to understand how APIs, JavaScript, and UI frameworks like Bootstrap work together in a real-world application.
+
+I started by using **Bootstrap templates** to quickly set up a clean and responsive UI layout.
+
+---
+
+## 🔄 API & Development Journey (What I Learned)
+
+### 1️⃣ Initial API Choice – API Ninja (Rapid Weather API)
+
+Initially, I used the **Rapid Weather API by API Ninja**.  
+However, I discovered that it retrieves weather data using **latitude and longitude instead of city names**, which made it inconvenient for implementing a simple city-based search feature.
+
+Because of this limitation, I decided to switch APIs.
+
+---
+
+### 2️⃣ Final API Choice – OpenWeather API
+
+I then integrated the **OpenWeather API**, which:
+- Allows fetching weather data directly using **city names**
+- Is **free to use**
+- Is more suitable for beginner-friendly and user-focused applications
+
+This significantly improved the usability of the project.
+
+---
+
+### 3️⃣ Bootstrap & Console Issue
+
+While developing the project, I initially faced an issue where **weather values were not appearing in the browser console**.
+
+After debugging, I realized the issue was related to **Bootstrap not loading properly** when using CDN links.
+
+To fix this:
+- I downloaded the **Bootstrap ZIP files**
+- Added them locally to the project (`css/` and `js/` folders)
+- Linked them correctly in the HTML file
+
+After this change, the JavaScript executed correctly and the API values started appearing in the console as expected.
+
+This helped me understand:
+- How external libraries affect script execution
+- The importance of correct file linking
+- Debugging using the browser console
+
+---
+
+## 🛠️ Tech Stack
+
+- **HTML5**
+- **CSS3**
+- **Bootstrap 5 (Local files)**
+- **JavaScript (ES6)**
+- **OpenWeather API**
+
+---
+
+## ✨ Features
+
+- 🔍 Search weather by **city name**
+- 🌡️ Displays:
+  - Current temperature
+  - Min & max temperature
+  - Humidity
+  - Wind speed
+  - Sunrise & sunset time
+- 🌍 Shows weather for multiple predefined cities
+- 📱 Fully responsive layout using Bootstrap
+- 🎨 Card-based UI with hover effects
+
+---
+
+## 📂 Project Structure
+
+```bash
+├── index.html
+├── css/
+│   └── bootstrap.min.css
+├── js/
+│   └── bootstrap.bundle.min.js
+├── script.js
+└── README.md

@@ -1,0 +1,25 @@
+#map {
+  height: 450px;
+  width: 100%;
+  margin: 20px auto 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* Map heading */
+.map-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0d6efd;
+  margin: 30px 0 10px 0;
+  text-align: center;
+}
+
+
+.sunrise-sunset-info {
+  font-size: 0.9rem;
+  color: #555; /* subtle color */
+}
+.sunrise-sunset-info strong {
+  color: #000; /* make times bold */
+}

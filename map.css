@@ -1,0 +1,80 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6fb;
+  margin: 0;
+  padding: 0;
+}
+
+/* Weather Location text */
+.map-title {
+  margin: 20px 0 10px 30px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+/* Back button (top-right floating) */
+.map-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  padding: 10px 20px;
+  background: #0d6efd;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+  background: #084298;
+  transform: translateY(-2px);
+}
+
+/* Map styling */
+#map {
+  height: 500px;
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Custom marker */
+.weather-marker {
+  font-size: 28px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+/* Leaflet popup styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+}
+
+/* Popup card */
+.popup-card {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.popup-card h4 {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #0d6efd;
+}
+
+.popup-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #333;
+}

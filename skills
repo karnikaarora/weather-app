@@ -1,0 +1,57 @@
+👉 README / Resume / Interview ke liye Skills Used
+
+
+🧱 Frontend
+HTML5 – page structure, forms, tables
+CSS3 – basic styling + hover effects
+Bootstrap 5
+Grid system
+Cards, Navbar, Tables
+Responsive layout
+Bootstrap templates usage
+
+⚙️ JavaScript
+Vanilla JavaScript (ES6)
+DOM Manipulation
+getElementById, querySelector
+Dynamically updating UI with API data
+
+Fetch API
+Making asynchronous API calls
+Handling JSON responses
+
+Event Handling
+Button click events
+Search functionality
+Basic Error Handling
+Invalid city / API issues (console debugging)
+
+🌐 APIs
+REST APIs
+OpenWeather API integration
+
+Understanding:
+API endpoints
+Query parameters
+API keys
+
+Comparison & evaluation of APIs
+(API Ninja → OpenWeather)
+
+🐞 Debugging & Tools
+Browser DevTools
+Console debugging
+Network tab understanding
+Fixing Bootstrap linking issues
+Understanding CDN vs local files
+
+🧠 Development Concepts
+Client-side rendering
+Separation of concerns (HTML / CSS / JS)
+Responsive design principles
+Problem-solving & iteration
+
+🚀 Deployment & Version Control (if you deploy)
+Git & GitHub
+Project structuring
+README documentation
