@@ -21,49 +21,16 @@ A simple weather app that shows real-time weather for any city with dynamic them
 - Leaflet.js (Maps)
 - FormSubmit (Email)
 
-## 🚀 How to Use
-
-1. Open `ss.html` in browser
-2. Type any city name and search
-3. See live weather data
-4. Watch colors change at sunrise/sunset
-
 ## 📡 API Used
 
 **OpenWeatherMap** - Free weather API
 - Get key: [openweathermap.org](https://openweathermap.org/api)
 
-## 📂 Files
-
-```
-├── ss.html          # Main weather page
-├── script.js        # JavaScript logic
-├── CSS/             # Bootstrap & styles
-├── JS/              # Bootstrap bundle
-└── README.md        # This file
-```
-
 ## 🎯 Quick Features
-
 | Feature | How to Use |
 |---------|-----------|
 | Search | Type city name and press Enter |
 | Voice | Click 🎤 and speak city name |
 | Units | Click °C or m/s to toggle |
 | Map | Shows location automatically |
-| Theme | Changes color at sunrise/sunset |
-
-## 📧 Email Setup (Optional)
-
-Edit line 369 in `ss.html`:
-```html
-action="https://formsubmit.co/your_email@gmail.com"
-```
-
-## 📝 License
-
-MIT License
-
----
-
-**Made with ❤️ using Vanilla JavaScript**
+| Theme | Changes color at sunrise/sunset |"
